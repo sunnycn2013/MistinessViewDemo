@@ -7,21 +7,62 @@
 //
 
 #import "ViewController.h"
+#import "DeatilViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic,strong)NSArray * imageList;
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    NSArray* urlArray =  [[NSBundle mainBundle] URLsForResourcesWithExtension:@"jpg" subdirectory:nil];
+    NSMutableArray* nameArray = [[NSMutableArray alloc] init];
+    for( int i =0; i<urlArray.count; i++ ) {
+        NSURL* url = urlArray[i];
+        NSString* name = [url relativeString];
+        [nameArray addObject:name];
+    }
+    self.imageList = nameArray;
+    
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    CGFloat height = [UIScreen mainScreen].bounds.size.height;
+
+    self.tabelView.frame = CGRectMake(0, 0, width, height-64);
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.imageList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * cellIdentifier = @"cellIdentifier";
+    UITableViewCell * cell = nil;
+    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    cell.textLabel.text = self.imageList[indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DeatilViewController * detail = [[DeatilViewController alloc] init];
+    detail.imageName = self.imageList[indexPath.row];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

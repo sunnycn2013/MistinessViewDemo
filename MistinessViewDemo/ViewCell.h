@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ViewCell.h
 //  MistinessViewDemo
 //
 //  Created by guochaoyang on 16/6/15.
@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
-@property (weak, nonatomic) IBOutlet UITableView *tabelView;
+@interface ViewCell : UITableViewCell
 
 @end
-
