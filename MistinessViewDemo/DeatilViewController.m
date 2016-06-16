@@ -8,6 +8,8 @@
 
 #import "DeatilViewController.h"
 #import "UIImage+ImageEffects.h"
+#import "UIImage+VisualEffect.h"
+#import "ListViewController.h"
 
 @interface DeatilViewController ()
 
@@ -18,39 +20,93 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"高斯模糊";
     
-    _firstImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 100, 200, 200)];
     UIImage * image = [UIImage imageNamed:self.imageName];
     _firstImage.image = [image applyLightEffect];
-    [self.view addSubview:_firstImage];
+    _firstImage.tag = 10;
     
-    _firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 200, 100, 35)];
     _firstLabel.text = @"vImage";
     [self.view addSubview:_firstLabel];
     
-    _secondImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 330, 200, 200)];
     _secondImage.image = [UIImage imageNamed:self.imageName];
-    [self.view addSubview:_secondImage];
-
-    if([[UIDevice currentDevice] systemVersion].floatValue >= 8.0)
-    {
-        UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        visualEffectView.frame = _secondImage.bounds;
-        [_secondImage addSubview:visualEffectView];
-    }
-    
-    _secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(220, 430, 150, 35)];
+    [_secondImage addVisualEffectView];
+    _secondImage.tag = 11;
+       
     _secondLabel.text = @"UIVisualEffectView";
     [self.view addSubview:_secondLabel];
+    [_imageView setImage:[UIImage imageNamed:self.imageName]];
+    _imageView.tag = 12;
     
-    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 530, 100, 100)];
-    [imageView setImage:[UIImage imageNamed:self.imageName]];
-    [self.view addSubview:imageView];
+    UITapGestureRecognizer * tap0 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    UITapGestureRecognizer * tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    UITapGestureRecognizer * tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+
+    [_firstImage addGestureRecognizer:tap0];
+    [_secondImage addGestureRecognizer:tap1];
+    [_imageView addGestureRecognizer:tap2];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//- (void)tapAction:(UITapGestureRecognizer *)tap
+//{
+//    ListViewController * list = [[ListViewController alloc] init];
+//    [self.navigationController pushViewController:list animated:YES];
+//}
+
+- (void)showListViewWithModel:(ListViewType)type
+{
+    ListViewController * list = [[ListViewController alloc] initWithModeType:type];
+    list.imageName = self.imageName;
+    [self.navigationController pushViewController:list animated:YES];
 }
+
+- (void)tapAction:(UITapGestureRecognizer *)tap
+{
+    ListViewController *list = nil;
+    NSInteger tag = tap.view.tag;
+    if (tag == 10) {
+        list = [[ListViewController alloc] initWithModeType:ListViewTypevImage];
+        list.imageName = self.imageName;
+        list.type = ListViewTypevImage;
+    }
+    
+    if (tag == 11) {
+        list = [[ListViewController alloc] initWithModeType:ListViewTypeVisualEffect];
+        list.imageName = self.imageName;
+        list.type = ListViewTypeVisualEffect;
+    }
+    
+    if (tag == 12) {
+        list = [[ListViewController alloc] initWithModeType:ListViewTypeNone];
+        list.imageName = self.imageName;
+        list.type = ListViewTypeNone;
+    }
+    [self.navigationController pushViewController:list animated:YES];
+}
+
+
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    if ([segue.identifier isEqualToString:@"tap1"]) {
+//        ListViewController *list = segue.destinationViewController;
+//        list.imageName = self.imageName;
+//        list.type = ListViewTypevImage;
+//        NSLog(@"%@",[segue.destinationViewController class]);
+//    }
+//    
+//    if ([segue.identifier isEqualToString:@"tap2"]) {
+//        ListViewController *list = segue.destinationViewController;
+//        list.imageName = self.imageName;
+//        list.type = ListViewTypeVisualEffect;
+//        NSLog(@"%@",[segue.destinationViewController class]);
+//    }
+//    
+//    if ([segue.identifier isEqualToString:@"tap3"]) {
+//        ListViewController *list = segue.destinationViewController;
+//        list.imageName = self.imageName;
+//        list.type = ListViewTypeNone;
+//        NSLog(@"%@",[segue.destinationViewController class]);
+//    }
+//}
 @end

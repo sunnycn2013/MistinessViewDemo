@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370633421D1241840064760E /* UATrackFPS.m in Sources */ = {isa = PBXBuildFile; fileRef = 370633411D1241840064760E /* UATrackFPS.m */; };
+		370633451D12421A0064760E /* UIImage+VisualEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 370633441D12421A0064760E /* UIImage+VisualEffect.m */; };
+		370633491D1243290064760E /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370633481D1243290064760E /* ListViewController.m */; };
+		3793CE061D127C10007B20BD /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3793CE051D127C10007B20BD /* ListCell.m */; };
 		37EDD7AC1D111BAD005E79F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37EDD7AB1D111BAD005E79F9 /* main.m */; };
 		37EDD7AF1D111BAD005E79F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37EDD7AE1D111BAD005E79F9 /* AppDelegate.m */; };
 		37EDD7B21D111BAD005E79F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37EDD7B11D111BAD005E79F9 /* ViewController.m */; };
@@ -25,6 +29,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		370633401D1241840064760E /* UATrackFPS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UATrackFPS.h; sourceTree = "<group>"; };
+		370633411D1241840064760E /* UATrackFPS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UATrackFPS.m; sourceTree = "<group>"; };
+		370633431D12421A0064760E /* UIImage+VisualEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+VisualEffect.h"; sourceTree = "<group>"; };
+		370633441D12421A0064760E /* UIImage+VisualEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+VisualEffect.m"; sourceTree = "<group>"; };
+		370633471D1243290064760E /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		370633481D1243290064760E /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		3793CE041D127C10007B20BD /* ListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
+		3793CE051D127C10007B20BD /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		37EDD7A71D111BAD005E79F9 /* MistinessViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MistinessViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37EDD7AB1D111BAD005E79F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		37EDD7AD1D111BAD005E79F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,6 +73,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		370633461D1242FE0064760E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				37EDD7D71D112970005E79F9 /* UIImage+ImageEffects.h */,
+				37EDD7D81D112970005E79F9 /* UIImage+ImageEffects.m */,
+				370633431D12421A0064760E /* UIImage+VisualEffect.h */,
+				370633441D12421A0064760E /* UIImage+VisualEffect.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		37EDD79E1D111BAD005E79F9 = {
 			isa = PBXGroup;
 			children = (
@@ -81,9 +104,10 @@
 		37EDD7A91D111BAD005E79F9 /* MistinessViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				37EDD7D71D112970005E79F9 /* UIImage+ImageEffects.h */,
-				37EDD7D81D112970005E79F9 /* UIImage+ImageEffects.m */,
 				37EDD7CB1D111C0D005E79F9 /* image */,
+				370633461D1242FE0064760E /* Category */,
+				370633401D1241840064760E /* UATrackFPS.h */,
+				370633411D1241840064760E /* UATrackFPS.m */,
 				37EDD7AD1D111BAD005E79F9 /* AppDelegate.h */,
 				37EDD7AE1D111BAD005E79F9 /* AppDelegate.m */,
 				37EDD7B01D111BAD005E79F9 /* ViewController.h */,
@@ -97,6 +121,10 @@
 				37EDD7D01D111F63005E79F9 /* ViewCell.m */,
 				37EDD7D21D111FA6005E79F9 /* DeatilViewController.h */,
 				37EDD7D31D111FA6005E79F9 /* DeatilViewController.m */,
+				370633471D1243290064760E /* ListViewController.h */,
+				370633481D1243290064760E /* ListViewController.m */,
+				3793CE041D127C10007B20BD /* ListCell.h */,
+				3793CE051D127C10007B20BD /* ListCell.m */,
 			);
 			path = MistinessViewDemo;
 			sourceTree = "<group>";
@@ -198,9 +226,13 @@
 			files = (
 				37EDD7D11D111F63005E79F9 /* ViewCell.m in Sources */,
 				37EDD7D41D111FA6005E79F9 /* DeatilViewController.m in Sources */,
+				370633491D1243290064760E /* ListViewController.m in Sources */,
+				3793CE061D127C10007B20BD /* ListCell.m in Sources */,
+				370633421D1241840064760E /* UATrackFPS.m in Sources */,
 				37EDD7D91D112970005E79F9 /* UIImage+ImageEffects.m in Sources */,
 				37EDD7B21D111BAD005E79F9 /* ViewController.m in Sources */,
 				37EDD7AF1D111BAD005E79F9 /* AppDelegate.m in Sources */,
+				370633451D12421A0064760E /* UIImage+VisualEffect.m in Sources */,
 				37EDD7AC1D111BAD005E79F9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +386,7 @@
 				37EDD7C01D111BAD005E79F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

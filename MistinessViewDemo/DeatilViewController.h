@@ -10,10 +10,12 @@
 
 @interface DeatilViewController : UIViewController
 
-@property (strong, nonatomic) UIImageView *firstImage;
-@property (strong, nonatomic) UIImageView *secondImage;
-@property (strong, nonatomic) UILabel     *firstLabel;
-@property (strong, nonatomic) UILabel     *secondLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *firstImage;
+@property (weak, nonatomic) IBOutlet UIImageView *secondImage;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel     *firstLabel;
+@property (weak, nonatomic) IBOutlet UILabel     *secondLabel;
+
 @property (strong, nonatomic) NSString    *imageName;
 
 @end

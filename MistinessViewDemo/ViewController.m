@@ -58,11 +58,14 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    DeatilViewController * detail = [[DeatilViewController alloc] init];
-    detail.imageName = self.imageList[indexPath.row];
-    [self.navigationController pushViewController:detail animated:YES];
+    if ([segue.identifier isEqualToString:@"SendValue"]) {
+        DeatilViewController *detail = segue.destinationViewController;
+        UITableViewCell * cell = (UITableViewCell *)sender;
+        detail.imageName = cell.textLabel.text;
+        NSLog(@"%@",[segue.destinationViewController class]);
+    }
 }
 
 @end
